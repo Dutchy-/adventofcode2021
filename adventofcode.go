@@ -1,0 +1,6 @@
+package main
+
+func main() {
+	lastyear_one()
+	lastyear_two()
+}
