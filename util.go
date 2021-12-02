@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func ReadLines(path string) []string {
@@ -77,4 +78,11 @@ func mul(a []int) int {
 		result *= v
 	}
 	return result
+}
+
+func ParseInstruction(line string) (string, int) {
+	x := strings.Split(line, " ")
+	i, err := strconv.Atoi(x[1])
+	check(err)
+	return x[0], i
 }
