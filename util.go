@@ -29,13 +29,25 @@ func check(e error) {
 	}
 }
 
+func SafeNumber(line string) int {
+	value, err := strconv.Atoi(line)
+	if err != nil {
+		return 0
+	}
+	return value
+}
+
+func Number(line string) int {
+	value, err := strconv.Atoi(line)
+	check(err)
+	return value
+}
+
 func Numbers(lines []string) []int {
 	result := make([]int, 0)
 
 	for _, line := range lines {
-		value, err := strconv.Atoi(line)
-		check(err)
-		result = append(result, value)
+		result = append(result, Number(line))
 	}
 
 	return result
