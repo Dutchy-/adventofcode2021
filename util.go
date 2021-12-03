@@ -38,16 +38,24 @@ func SafeNumber(line string) int {
 }
 
 func Number(line string) int {
-	value, err := strconv.Atoi(line)
-	check(err)
-	return value
+	return NumberBase(line, 10)
 }
 
 func Numbers(lines []string) []int {
+	return NumbersBase(lines, 10)
+}
+
+func NumberBase(line string, base int) int {
+	value, err := strconv.ParseInt(line, base, 32)
+	check(err)
+	return int(value)
+}
+
+func NumbersBase(lines []string, base int) []int {
 	result := make([]int, 0)
 
 	for _, line := range lines {
-		result = append(result, Number(line))
+		result = append(result, NumberBase(line, base))
 	}
 
 	return result
@@ -97,4 +105,12 @@ func ParseInstruction(line string) (string, int) {
 	i, err := strconv.Atoi(x[1])
 	check(err)
 	return x[0], i
+}
+
+func BitMask(bits int) int {
+	return 1<<bits - 1
+}
+
+func Bit(n int, pos int) int {
+	return n >> (pos - 1) & 1
 }
