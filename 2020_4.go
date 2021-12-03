@@ -22,7 +22,7 @@ func lastyear_four() {
 		pass := attr.GetPassport()
 		if pass.IsValid() {
 			reallyValid += 1
-			fmt.Println(pass)
+			// fmt.Println(pass)
 		}
 	}
 
