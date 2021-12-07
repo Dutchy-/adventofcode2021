@@ -114,3 +114,23 @@ func BitMask(bits int) int {
 func Bit(n int, pos int) int {
 	return n >> (pos - 1) & 1
 }
+
+func Mean(n []int) float64 {
+	return float64(sum(n)) / float64(len(n))
+}
+
+func Median(n []int) int {
+	l := len(n)
+	if l%2 == 0 {
+		return int(Mean(n[l/2-1 : l/2+1]))
+	} else {
+		return n[l/2]
+	}
+}
+
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
